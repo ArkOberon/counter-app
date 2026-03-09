@@ -1,15 +1,16 @@
 import { Text, StyleSheet, Pressable } from "react-native";
 
 interface Props {
-    onPress?: () => void;
-    onLongPress?: () => void;
-    label?: string;
+  onPress?: () => void;
+  onLongPress?: () => void;
+  label?: string;
+  position?: 'left' | 'right';
 }
 
-const FAB = ({ onPress, onLongPress, label }: Props) => {
+const FAB = ({ onPress, onLongPress, label, position = 'right' }: Props) => {
   return (
     <Pressable
-      style={styles.floatingButton}
+      style={[styles.floatingButton, position === 'right' ? styles.positionRight : styles.positionLeft]}
       onPress={onPress}
       onLongPress={onLongPress}
     >
@@ -24,8 +25,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 100,
     position: "absolute",
-    bottom: 50,
-    right: 50,
+    bottom: 50,   
     shadowColor: "#373737",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
@@ -37,6 +37,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
+  positionRight: {
+    right: 20
+  },
+  positionLeft: {
+    left: 20
+  }  
 });
 
 export default FAB;

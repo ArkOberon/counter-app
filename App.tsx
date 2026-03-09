@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import FAB from './components/FAB';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
 
@@ -15,7 +15,15 @@ export default function App() {
         onPress={() => setCounter(counter + 1)}
         onLongPress={() => setCounter(0)}
         label="+1"
-      />      
+        position="right"
+      />   
+
+      <FAB
+        onPress={() => setCounter(counter - 1)}
+        onLongPress={() => setCounter(0)}
+        label="-1"
+        position="left"
+      />   
 
       <StatusBar style="auto" />
     </View>
